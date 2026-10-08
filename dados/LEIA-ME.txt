@@ -1,0 +1,24 @@
+PACOTE DE DADOS "TECHNORTE" — UFCD 10804 · Projeto de Business Intelligence
+==========================================================================
+
+Conteúdo
+--------
+technorte_erp.sql          base de dados operacional (dump MySQL)
+metas_vendas.xlsx          metas mensais de vendas por loja (Direção Comercial)
+custos_produtos.xlsx       custos unitários de aquisição (Compras)
+campanhas_marketing.xlsx   campanhas de marketing (Marketing)
+inquerito_satisfacao.xlsx  respostas ao inquérito pós-compra (Apoio ao Cliente)
+trafego_web.csv            tráfego diário do site (plataforma web)
+feriados.csv               feriados nacionais 2024-2026
+
+Importar a base de dados
+------------------------
+Linha de comandos (MySQL 8 / MariaDB 10.6+):
+
+    mysql -u root -p < technorte_erp.sql
+
+O script cria a base de dados "technorte_erp" (apaga-a se já existir) e carrega
+todas as tabelas. Também pode ser executado no MySQL Workbench (File > Run SQL Script).
+
+Período dos dados: 2024-01-01 a 2026-06-30.
+A descrição das fontes consta do Anexo A do enunciado.
