@@ -1,4 +1,5 @@
 """Acesso ao MySQL: ligações, leitura para DataFrame, execução de scripts e inserção em lote."""
+from datetime import date, datetime
 from decimal import Decimal
 
 import numpy as np
@@ -25,8 +26,12 @@ def ler(con, sql):
         linhas = cur.fetchall()
     df = pd.DataFrame(list(linhas), columns=colunas)
     for c in df.columns:
-        if len(df) and df[c].map(lambda v: isinstance(v, Decimal)).any():
+        if not len(df):
+            continue
+        if df[c].map(lambda v: isinstance(v, Decimal)).any():
             df[c] = df[c].astype(float)
+        elif df[c].map(lambda v: isinstance(v, (date, datetime))).any():
+            df[c] = pd.to_datetime(df[c])
     return df
 
 
