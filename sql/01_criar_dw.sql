@@ -106,7 +106,7 @@ CREATE TABLE dim_cliente (
   distrito_com_loja   TINYINT(1)    NOT NULL COMMENT '1 = existe loja física no distrito do cliente',
   data_registo        DATE          NULL,
   ano_nascimento      SMALLINT      NULL,
-  faixa_etaria        VARCHAR(10)   NOT NULL,
+  faixa_etaria        VARCHAR(15)   NOT NULL,
   data_primeira_compra DATE         NULL COMMENT 'Primeira encomenda não cancelada no ERP',
   registo_apos_compra TINYINT(1)    NOT NULL DEFAULT 0 COMMENT '1 = data de registo posterior à primeira compra',
   duplicado_fundido   TINYINT(1)    NOT NULL DEFAULT 0

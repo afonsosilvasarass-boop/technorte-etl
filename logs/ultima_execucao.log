@@ -1,0 +1,94 @@
+2026-10-09 09:36:28 | INFO    | ETL TechNorte — início | MySQL localhost:3306 | ERP=technorte_erp | DW=technorte_dw
+2026-10-09 09:36:28 | INFO    | Extração
+2026-10-09 09:36:31 | INFO    |   ERP lojas                     8 registos lidos
+2026-10-09 09:36:31 | INFO    |   ERP categorias                6 registos lidos
+2026-10-09 09:36:31 | INFO    |   ERP produtos                120 registos lidos
+2026-10-09 09:36:31 | INFO    |   ERP clientes               1535 registos lidos
+2026-10-09 09:36:31 | INFO    |   ERP vendedores               23 registos lidos
+2026-10-09 09:36:31 | INFO    |   ERP encomendas            43087 registos lidos
+2026-10-09 09:36:31 | INFO    |   ERP linhas_encomenda      71817 registos lidos
+2026-10-09 09:36:31 | INFO    |   ERP devolucoes             1461 registos lidos
+2026-10-09 09:36:31 | INFO    |   custos_produtos.xlsx        140 registos lidos
+2026-10-09 09:36:31 | INFO    |   campanhas_marketing.xlsx       14 registos lidos
+2026-10-09 09:36:31 | INFO    |   inquerito_satisfacao.xlsx     3230 registos lidos
+2026-10-09 09:36:31 | INFO    |   trafego_web.csv            4545 registos lidos
+2026-10-09 09:36:31 | INFO    |   feriados.csv                 42 registos lidos
+2026-10-09 09:36:31 | INFO    |   metas_vendas.xlsx [2025]        14 linhas (com totais e notas)
+2026-10-09 09:36:31 | INFO    |   metas_vendas.xlsx [2026]        14 linhas (com totais e notas)
+2026-10-09 09:36:31 | INFO    | Transformação
+2026-10-09 09:36:40 | INFO    | fact_vendas: 22 linhas rejeitadas por pertencerem a encomendas excluídas (Q07/Q08), 11 por Q12
+2026-10-09 09:36:41 | INFO    | Carga
+2026-10-09 09:36:42 | INFO    | Carregada dim_data                   1096 linhas
+2026-10-09 09:36:42 | INFO    | Carregada dim_loja                      8 linhas
+2026-10-09 09:36:42 | INFO    | Carregada dim_canal                     2 linhas
+2026-10-09 09:36:42 | INFO    | Carregada dim_produto                 146 linhas
+2026-10-09 09:36:42 | INFO    | Carregada dim_cliente                1500 linhas
+2026-10-09 09:36:42 | INFO    | Carregada dim_vendedor                 24 linhas
+2026-10-09 09:36:42 | INFO    | Carregada dim_campanha                 15 linhas
+2026-10-09 09:36:42 | INFO    | Carregada ponte_campanha_loja          64 linhas
+2026-10-09 09:36:42 | INFO    | Carregada dim_motivo_devolucao          4 linhas
+2026-10-09 09:36:42 | INFO    | Carregada dim_fonte_web                 5 linhas
+2026-10-09 09:36:55 | INFO    | Carregada fact_vendas               71784 linhas
+2026-10-09 09:36:55 | INFO    | Carregada fact_devolucoes            1461 linhas
+2026-10-09 09:36:55 | INFO    | Carregada fact_metas                  190 linhas
+2026-10-09 09:36:55 | INFO    | Carregada fact_trafego_web           4545 linhas
+2026-10-09 09:36:56 | INFO    | Carregada fact_satisfacao            3195 linhas
+2026-10-09 09:36:56 | INFO    | Carregada dq_registo                 1392 linhas
+2026-10-09 09:36:56 | INFO    | Verificação vendas sem data                          OK
+2026-10-09 09:36:56 | INFO    | Verificação vendas sem produto                       OK
+2026-10-09 09:36:56 | INFO    | Verificação vendas sem cliente                       OK
+2026-10-09 09:36:56 | INFO    | Verificação devoluções sem linha de venda            OK
+2026-10-09 09:36:56 | INFO    | Verificação respostas sem loja                       OK
+2026-10-09 09:36:57 | INFO    | Verificação linhas com custo fora da versão SCD2     OK
+2026-10-09 09:36:57 | INFO    | Verificação devolvido acima do vendido (linha)       OK
+2026-10-09 09:36:57 | INFO    | Controlo 2024: vendas de encomendas não canceladas = 12753603.06 EUR em 14614 encomendas
+2026-10-09 09:36:57 | INFO    | Controlo 2025: vendas de encomendas não canceladas = 15892261.70 EUR em 18425 encomendas
+2026-10-09 09:36:57 | INFO    | Controlo 2026: vendas de encomendas não canceladas = 7090551.92 EUR em 8241 encomendas
+2026-10-09 09:36:57 | INFO    | Resumo por fonte (lidos / rejeitados / corrigidos / carregados):
+2026-10-09 09:36:57 | INFO    |   feriados.csv               -> dim_data                        42       0       0      42
+2026-10-09 09:36:57 | INFO    |   ERP lojas                  -> dim_loja                         8       0       0       8
+2026-10-09 09:36:57 | INFO    |   ERP produtos               -> dim_produto                    120       0       3     146
+2026-10-09 09:36:57 | INFO    |   custos_produtos.xlsx       -> dim_produto                    140       0      15     140
+2026-10-09 09:36:57 | INFO    |   ERP encomendas             -> fact_vendas (encomendas)     43087      12       3   43075
+2026-10-09 09:36:57 | INFO    |   ERP clientes               -> dim_cliente                   1535      35     128    1500
+2026-10-09 09:36:57 | INFO    |   ERP vendedores             -> dim_vendedor                    23       0       0      24
+2026-10-09 09:36:57 | INFO    |   campanhas_marketing.xlsx   -> dim_campanha                    14       0      14      15
+2026-10-09 09:36:57 | INFO    |   campanhas_marketing.xlsx   -> ponte_campanha_loja             14       0       0      64
+2026-10-09 09:36:57 | INFO    |   ERP linhas_encomenda       -> fact_vendas                  71817      33       8   71784
+2026-10-09 09:36:57 | INFO    |   ERP devolucoes             -> fact_devolucoes               1461       0       0    1461
+2026-10-09 09:36:57 | INFO    |   metas_vendas.xlsx          -> fact_metas                     192       2       0     190
+2026-10-09 09:36:57 | INFO    |   trafego_web.csv            -> fact_trafego_web              4545       0       0    4545
+2026-10-09 09:36:57 | INFO    |   inquerito_satisfacao.xlsx  -> fact_satisfacao               3230      35     270    3195
+2026-10-09 09:36:57 | INFO    | Regras de qualidade aplicadas:
+2026-10-09 09:36:57 | INFO    |   Q01 ERP clientes               Corrigido     35 ocorrências          0.00 EUR
+2026-10-09 09:36:57 | INFO    |   Q02 ERP clientes               Corrigido    104 ocorrências          0.00 EUR
+2026-10-09 09:36:57 | INFO    |   Q03 ERP clientes               Corrigido      0 ocorrências          0.00 EUR
+2026-10-09 09:36:57 | INFO    |   Q04 ERP clientes               Corrigido     25 ocorrências          0.00 EUR
+2026-10-09 09:36:57 | INFO    |   Q05 ERP produtos               Corrigido      3 ocorrências          0.00 EUR
+2026-10-09 09:36:57 | INFO    |   Q06 ERP vendedores             Sinalizado     4 ocorrências          0.00 EUR
+2026-10-09 09:36:57 | INFO    |   Q07 ERP encomendas             Corrigido      3 ocorrências          0.00 EUR
+2026-10-09 09:36:57 | INFO    |   Q08 ERP encomendas             Excluído      12 ocorrências      18403.92 EUR
+2026-10-09 09:36:57 | INFO    |   Q09 ERP encomendas             Sinalizado     0 ocorrências          0.00 EUR
+2026-10-09 09:36:57 | INFO    |   Q10 ERP encomendas             Sinalizado   281 ocorrências          0.00 EUR
+2026-10-09 09:36:57 | INFO    |   Q11 ERP linhas_encomenda       Sinalizado     4 ocorrências       2084.60 EUR
+2026-10-09 09:36:57 | INFO    |   Q12 ERP linhas_encomenda       Excluído      11 ocorrências       -695.52 EUR
+2026-10-09 09:36:57 | INFO    |   Q13 ERP linhas_encomenda       Corrigido      8 ocorrências       2935.06 EUR
+2026-10-09 09:36:57 | INFO    |   Q14 ERP devolucoes             Excluído       0 ocorrências          0.00 EUR
+2026-10-09 09:36:57 | INFO    |   Q15 ERP devolucoes             Sinalizado     8 ocorrências          0.00 EUR
+2026-10-09 09:36:57 | INFO    |   Q16 custos_produtos.xlsx       Corrigido     15 ocorrências          0.00 EUR
+2026-10-09 09:36:57 | INFO    |   Q17 custos_produtos.xlsx       Corrigido      5 ocorrências          0.00 EUR
+2026-10-09 09:36:57 | INFO    |   Q18 custos_produtos.xlsx       Excluído       0 ocorrências          0.00 EUR
+2026-10-09 09:36:57 | INFO    |   Q19 metas_vendas.xlsx          Sinalizado     2 ocorrências          0.00 EUR
+2026-10-09 09:36:57 | INFO    |   Q20 metas_vendas.xlsx          Sinalizado     0 ocorrências          0.00 EUR
+2026-10-09 09:36:57 | INFO    |   Q21 campanhas_marketing.xlsx   Corrigido     14 ocorrências          0.00 EUR
+2026-10-09 09:36:57 | INFO    |   Q22 campanhas_marketing.xlsx   Sinalizado     1 ocorrências       8000.00 EUR
+2026-10-09 09:36:57 | INFO    |   Q23 inquerito_satisfacao.xlsx  Excluído      29 ocorrências          0.00 EUR
+2026-10-09 09:36:57 | INFO    |   Q24 inquerito_satisfacao.xlsx  Excluído       6 ocorrências          0.00 EUR
+2026-10-09 09:36:57 | INFO    |   Q25 inquerito_satisfacao.xlsx  Corrigido      1 ocorrências          0.00 EUR
+2026-10-09 09:36:57 | INFO    |   Q26 inquerito_satisfacao.xlsx  Corrigido    269 ocorrências          0.00 EUR
+2026-10-09 09:36:57 | INFO    |   Q27 inquerito_satisfacao.xlsx  Sinalizado     0 ocorrências          0.00 EUR
+2026-10-09 09:36:57 | INFO    |   Q28 inquerito_satisfacao.xlsx  Excluído       0 ocorrências          0.00 EUR
+2026-10-09 09:36:57 | INFO    |   Q29 trafego_web.csv            Sinalizado     3 ocorrências          0.00 EUR
+2026-10-09 09:36:57 | INFO    |   Q30 ERP clientes               Sinalizado   549 ocorrências          0.00 EUR
+2026-10-09 09:37:00 | INFO    | Script E3 gerado: C:\Users\João Silva\Desktop\projeto novo powerbi\TechNorte\technorte-etl\saida\E3_DW_SaraSilva.sql
+2026-10-09 09:37:00 | INFO    | ETL terminado (Sucesso) em 31.9 s — execução n.º 2
